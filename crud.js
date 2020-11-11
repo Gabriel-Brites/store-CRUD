@@ -5,23 +5,32 @@ function create(product){
     return item;
 }
 
-function remove(index){
-    item.splice(index,1);
-    return item;
-}
-
-function update(index,newProduct){
-    item.splice(index,1,newProduct);
-    return item;
-}
-
-function read(index){
-    if (index>=0){
-        return item[index];
-    }else if (index<0){
-        console.log("valor invalido");    
+function remove(id){
+    if(id<=0){
+        return "Id invalido";
     }else{
-      return item;  
+        item.splice(id-1,1);
+        item.forEach((element,index)=>item[index].id = index+1);
+        return item;
+    }
+}
+
+function update(id,newProduct){
+    if(id<=0){
+        return "Id invalido";
+    }else{
+        item.splice(id-1,1,{id:id, ...newProduct});
+        return item;
+    }
+}
+
+function read(id){
+    if (id>0){
+        return item[id-1];
+    }else if (id<=0){
+        return "Id invalido";    
+    }else{
+        return item;
     } 
 }
 
