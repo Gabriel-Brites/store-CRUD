@@ -10,7 +10,7 @@ function remove(id){
         return "Id invalido";
     }else{
         item.splice(id-1,1);
-        item.forEach((element,index)=>item[index].id = index+1);
+        item.forEach((element,index)=>element.id = index+1);
         return item;
     }
 }
