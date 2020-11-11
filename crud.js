@@ -1,35 +1,33 @@
-var item = new Array();
+let item = [];
 
-function add(){
-    for (var i=0;i<arguments.length;i++){
-        item.push(arguments[i]);
-    }
+function create(product){
+    item.push({id:item.length+1, ...product});
     return item;
 }
 
-function del(index,n=1){
-    item.splice(index,n);
+function remove(index){
+    item.splice(index,1);
     return item;
 }
 
-function update(index,newItem,n=1){
-    item.splice(index,n,newItem);
+function update(index,newProduct){
+    item.splice(index,1,newProduct);
     return item;
 }
 
 function read(index){
     if (index>=0){
-        console.log(item.indexOf(item[index]),item[index]);
+        return item[index];
+    }else if (index<0){
+        console.log("valor invalido");    
     }else{
-        item.forEach(function(item, index){
-            console.log(index, item);
-        });
-    }
+      return item;  
+    } 
 }
 
 module.exports = {
-    add,
-    del,
+    create,
+    remove,
     update,
     read
 }
